@@ -30,9 +30,12 @@ import SalesforceSDKCore
 class RootViewController : UIViewController, UITableViewDataSource, UITableViewDelegate, SFRestDelegate
 {
     let user = SFUserAccountManager.sharedInstance().currentUser
-
+    let auth = SFAuthenticationManager.shared()
     @IBOutlet weak var CloseEvents: UITableView!
     @IBOutlet weak var fullName: UILabel!
+    @IBAction func LogoutButton(_ sender: Any) {
+        auth.logout()
+    }
 //    @IBOutlet weak var txt: UITextField!
 //    @IBOutlet weak var userName: UILabel!
 //    @IBAction func Button(_ sender: Any) {

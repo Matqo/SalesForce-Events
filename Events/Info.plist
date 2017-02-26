@@ -29,7 +29,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>SFDCOAuthLoginHost</key>
-	<string>login.salesforce.com</string>
+	<string>eventz-developer-edition.eu11.force.com</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

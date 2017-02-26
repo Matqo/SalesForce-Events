@@ -27,7 +27,10 @@ import UIKit
 import SalesforceSDKCore
 
 // Fill these in when creating a new Connected Application on Force.com
-let RemoteAccessConsumerKey = "3MVG98_Psg5cppyasQ6Ohn7b5HYhOzYcSHmfIu1r5Tfv54L2qHNf1M1p7oWrOYFeD0FUyZ149zMTQ2O0Sjo7w";
+//3MVG98_Psg5cppyasQ6Ohn7b5HYhOzYcSHmfIu1r5Tfv54L2qHNf1M1p7oWrOYFeD0FUyZ149zMTQ2O0Sjo7w
+//evententhusiasts-developer-edition.eu6.force.com
+//eventz-developer-edition.eu11.force.com
+let RemoteAccessConsumerKey = "3MVG9HxRZv05HarQY55hpUNJmHewfu1phwhlRH531vUVas5A06.1_mdAHNVkSdDDrTznAhSF0m0PVxYZuo0gB";
 let OAuthRedirectURI        = "testsfdc:///mobilesdk/detect/oauth/done";
 
 class AppDelegate : UIResponder, UIApplicationDelegate
