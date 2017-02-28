@@ -7,6 +7,7 @@ PODS:
     - CocoaLumberjack/Core
   - CocoaLumberjack/Extensions (2.4.0):
     - CocoaLumberjack/Default
+  - EstimoteSDK (4.13.1)
   - SalesforceAnalytics (5.0.0):
     - SalesforceAnalytics/SalesforceAnalytics (= 5.0.0)
   - SalesforceAnalytics/SalesforceAnalytics (5.0.0)
@@ -45,6 +46,7 @@ PODS:
     - SQLCipher/common
 
 DEPENDENCIES:
+  - EstimoteSDK
   - SalesforceAnalytics (from `node_modules/SalesforceMobileSDK-iOS`)
   - SalesforceSDKCore (from `node_modules/SalesforceMobileSDK-iOS`)
   - SmartStore (from `node_modules/SalesforceMobileSDK-iOS`)
@@ -62,12 +64,13 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CocoaLumberjack: aa9dcab71bdf9eaf2a63bbd9ddc87863efe45457
+  EstimoteSDK: 3b1133d4d5f3142388e3495e801a1a4c3e8cf71f
   SalesforceAnalytics: 8e16046229df625bd88214e468fa55e11dcfdb5e
   SalesforceSDKCore: 39bffb4e3e505a962fa076debfcc0ab6ae4b479a
   SmartStore: 36978c292c514c2fee454dcfaae95a7b3ee0b17d
   SmartSync: 86cd661d31103675f1a79d9a7838db91e2915aba
   SQLCipher: 4c768761421736a247ed6cf412d9045615d53dff
 
-PODFILE CHECKSUM: eedb24dbb5b2804d18de8429dc83a17d6138d39a
+PODFILE CHECKSUM: 3e6a40a85c721734a6c3763dbdfdff04b99c4b2f
 
 COCOAPODS: 1.2.0
