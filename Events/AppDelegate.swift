@@ -33,9 +33,11 @@ import SalesforceSDKCore
 let RemoteAccessConsumerKey = "3MVG9HxRZv05HarQY55hpUNJmHewfu1phwhlRH531vUVas5A06.1_mdAHNVkSdDDrTznAhSF0m0PVxYZuo0gB";
 let OAuthRedirectURI        = "testsfdc:///mobilesdk/detect/oauth/done";
 
-class AppDelegate : UIResponder, UIApplicationDelegate
+class AppDelegate : UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate
 {
     var window: UIWindow?
+    
+    let beaconManager = ESTBeaconManager()
     
     override
     init()
@@ -69,11 +71,13 @@ class AppDelegate : UIResponder, UIApplicationDelegate
     }
     
     // MARK: - App delegate lifecycle
-    
+        let beaconNotificationsManager = BeaconNotificationsManager()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.initializeAppViewState();
+        self.beaconManager.delegate = self
+        self.beaconManager.requestAlwaysAuthorization()
         
         //
         // If you wish to register for push notifications, uncomment the line below.  Note that,
@@ -95,6 +99,19 @@ class AppDelegate : UIResponder, UIApplicationDelegate
         // loginViewController.navBarFont = UIFont (name: "Helvetica Neue", size: 16);
         // loginViewController.navBarTextColor = UIColor.black;
         //
+        self.beaconNotificationsManager.enableNotifications(
+            // TODO: replace with UUID, major and minor of your own beacon
+            for: BeaconID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 37991, minor: 47294),
+            enterMessage: "Welcome to event 1",
+            exitMessage: "Thanks for visiting event 1"
+        )
+        self.beaconNotificationsManager.enableNotifications(
+            // TODO: replace with UUID, major and minor of your own beacon
+            for: BeaconID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D", major: 39836, minor: 22244),
+            enterMessage: "Welcome to event 2",
+            exitMessage: "Thanks for visiting event 2"
+        )
+        
         SalesforceSDKManager.shared().launch()
         
         return true

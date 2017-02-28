@@ -30,6 +30,8 @@
 	<true/>
 	<key>SFDCOAuthLoginHost</key>
 	<string>eventz-developer-edition.eu11.force.com</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We always use bluetooth to let you know how far you are from the event!</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

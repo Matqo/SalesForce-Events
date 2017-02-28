@@ -12,5 +12,6 @@ pod 'SalesforceAnalytics', :path => 'node_modules/SalesforceMobileSDK-iOS'
 pod 'SalesforceSDKCore', :path => 'node_modules/SalesforceMobileSDK-iOS'
 pod 'SmartStore', :path => 'node_modules/SalesforceMobileSDK-iOS'
 pod 'SmartSync', :path => 'node_modules/SalesforceMobileSDK-iOS'
+pod ‘EstimoteSDK’
 
 end

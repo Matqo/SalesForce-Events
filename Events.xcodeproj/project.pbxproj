@@ -13,7 +13,11 @@
 		4FD6C49F1B755242002F9F90 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6C49C1B755242002F9F90 /* RootViewController.swift */; };
 		4FD6C4A01B755242002F9F90 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6C49D1B755242002F9F90 /* InitialViewController.swift */; };
 		78A235BD93AB7D080D67CD51 /* Pods_Events.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A29C75280BDF73123F14B4 /* Pods_Events.framework */; };
+		A8398A801E64DD6A001A7451 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8398A7F1E64DD6A001A7451 /* EventCell.swift */; };
 		A87474491E3FB6DE00BCE55B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A87474481E3FB6DE00BCE55B /* Main.storyboard */; };
+		A8ED69D71E63498500FFCCBE /* BeaconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED69D61E63498500FFCCBE /* BeaconController.swift */; };
+		A8ED69DC1E638B0500FFCCBE /* BeaconNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED69DB1E638B0500FFCCBE /* BeaconNotificationsManager.swift */; };
+		A8ED69DE1E638B0E00FFCCBE /* BeaconID.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED69DD1E638B0E00FFCCBE /* BeaconID.swift */; };
 		A8EFC0591E423360006E82CB /* EventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EFC0581E423360006E82CB /* EventsController.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +34,15 @@
 		4FF12F8A1DCA91F5004D9EF9 /* Events.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Events.entitlements; sourceTree = "<group>"; };
 		762732C14CFE40A989C3AD70 /* Pods-Events.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Events.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Events/Pods-Events.debug.xcconfig"; sourceTree = "<group>"; };
 		82A29C75280BDF73123F14B4 /* Pods_Events.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Events.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8398A7F1E64DD6A001A7451 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		A87474481E3FB6DE00BCE55B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A8ED69CE1E63335500FFCCBE /* EstimoteSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EstimoteSDK.framework; path = "../../Downloads/iOS-SDK-master/EstimoteSDK/EstimoteSDK.framework"; sourceTree = "<group>"; };
+		A8ED69D01E633ED300FFCCBE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A8ED69D21E633EE900FFCCBE /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		A8ED69D41E633EF900FFCCBE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A8ED69D61E63498500FFCCBE /* BeaconController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconController.swift; sourceTree = "<group>"; };
+		A8ED69DB1E638B0500FFCCBE /* BeaconNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconNotificationsManager.swift; sourceTree = "<group>"; };
+		A8ED69DD1E638B0E00FFCCBE /* BeaconID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconID.swift; sourceTree = "<group>"; };
 		A8EFC0581E423360006E82CB /* EventsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +98,8 @@
 		4FD6C4A11B755265002F9F90 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A8ED69DD1E638B0E00FFCCBE /* BeaconID.swift */,
+				A8ED69DB1E638B0500FFCCBE /* BeaconNotificationsManager.swift */,
 				4FD6C49A1B755242002F9F90 /* Bridging-Header.h */,
 				4FD6C49C1B755242002F9F90 /* RootViewController.swift */,
 				4FD6C49D1B755242002F9F90 /* InitialViewController.swift */,
@@ -93,6 +107,8 @@
 				4F393A281C3C8BCD00B3EA13 /* main.swift */,
 				A87474481E3FB6DE00BCE55B /* Main.storyboard */,
 				A8EFC0581E423360006E82CB /* EventsController.swift */,
+				A8ED69D61E63498500FFCCBE /* BeaconController.swift */,
+				A8398A7F1E64DD6A001A7451 /* EventCell.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -100,6 +116,10 @@
 		6B868AEB1ACA7FCA4636C7F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A8ED69D41E633EF900FFCCBE /* SystemConfiguration.framework */,
+				A8ED69D21E633EE900FFCCBE /* CoreBluetooth.framework */,
+				A8ED69D01E633ED300FFCCBE /* CoreLocation.framework */,
+				A8ED69CE1E63335500FFCCBE /* EstimoteSDK.framework */,
 				82A29C75280BDF73123F14B4 /* Pods_Events.framework */,
 			);
 			name = Frameworks;
@@ -243,9 +263,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FD6C47A1B754AF1002F9F90 /* AppDelegate.swift in Sources */,
+				A8398A801E64DD6A001A7451 /* EventCell.swift in Sources */,
+				A8ED69D71E63498500FFCCBE /* BeaconController.swift in Sources */,
 				4FD6C49F1B755242002F9F90 /* RootViewController.swift in Sources */,
+				A8ED69DC1E638B0500FFCCBE /* BeaconNotificationsManager.swift in Sources */,
 				4F393A291C3C8BCD00B3EA13 /* main.swift in Sources */,
 				4FD6C4A01B755242002F9F90 /* InitialViewController.swift in Sources */,
+				A8ED69DE1E638B0E00FFCCBE /* BeaconID.swift in Sources */,
 				A8EFC0591E423360006E82CB /* EventsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

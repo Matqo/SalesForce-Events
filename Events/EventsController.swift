@@ -23,6 +23,7 @@ class EventsController: UIViewController, UITableViewDataSource, UITableViewDele
         self.EventTable.register(UITableViewCell.self, forCellReuseIdentifier:"cell")
         self.EventTable.dataSource=self
         self.EventTable.delegate=self
+        //self.EventTable.register(EventCell.self, forCellReuseIdentifier: "cell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +38,7 @@ class EventsController: UIViewController, UITableViewDataSource, UITableViewDele
             //self.title = "Mobile SDK Sample App"
     
             //Here we use a query that should work on either Force.com or Database.com
-            let request = SFRestAPI.sharedInstance().request(forQuery:"SELECT Name FROM Event__c ORDER BY Name ASC NULLS FIRST");
+            let request = SFRestAPI.sharedInstance().request(forQuery:"SELECT Name,CreatedById FROM Event__c ORDER BY Name ASC NULLS FIRST");
             SFRestAPI.sharedInstance().send(request, delegate: self);
         }
         func request(_ request: SFRestRequest, didLoadResponse jsonResponse: Any)
@@ -58,9 +59,11 @@ class EventsController: UIViewController, UITableViewDataSource, UITableViewDele
     }
     //var items=["Dog","Cat"]
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.EventTable.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+        let cell = self.EventTable.dequeueReusableCell(withIdentifier: "customCell")! as! EventCell
         let obj = dataRows[indexPath.row]
-        cell.textLabel!.text = obj["Name"] as? String
+        //cell.textLabel!.text = obj["Name"] as? String
+        cell.eventName!.text = obj["Name"] as? String
+        cell.createdBy!.text = obj["CreatedById"] as? String
         self.log(.debug, msg: "RECORD:: \(obj["Name"] as? String)")
 
         return cell
