@@ -15,9 +15,9 @@ class BeaconNotificationsManager: NSObject, ESTBeaconManagerDelegate {
         super.init()
 
         self.beaconManager.delegate = self
-        self.beaconManager.requestAlwaysAuthorization()
+        //self.beaconManager.requestAlwaysAuthorization()
 
-        UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert], categories: nil))
+        //UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert], categories: nil))
     }
 
     func enableNotifications(for beaconID: BeaconID, enterMessage: String?, exitMessage: String?) {

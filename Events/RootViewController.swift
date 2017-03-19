@@ -33,8 +33,13 @@ class RootViewController : UIViewController, UITableViewDataSource, UITableViewD
     let auth = SFAuthenticationManager.shared()
     @IBOutlet weak var CloseEvents: UITableView!
     @IBOutlet weak var fullName: UILabel!
-    @IBAction func LogoutButton(_ sender: Any) {
+
+
+    var logoutButton = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.plain, target: self, action: #selector(SFLogout(sender:)))
+    
+    func SFLogout(sender: UIBarButtonItem){
         auth.logout()
+        self.log(.debug, msg: "LOGOUT!")
     }
 //    @IBOutlet weak var txt: UITextField!
 //    @IBOutlet weak var userName: UILabel!
@@ -45,7 +50,11 @@ class RootViewController : UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fullName.text = user?.fullName
+        navigationItem.title = "Events"
+        navigationItem.rightBarButtonItem = logoutButton
+        navigationItem.rightBarButtonItem?.target = self
+        fullName.text = user?.accountIdentity.userId
+        
         self.CloseEvents.register(UITableViewCell.self, forCellReuseIdentifier:"cell")
         self.CloseEvents.dataSource=self
         self.CloseEvents.delegate=self
@@ -61,7 +70,7 @@ class RootViewController : UIViewController, UITableViewDataSource, UITableViewD
         //self.title = "Mobile SDK Sample App"
         
         //Here we use a query that should work on either Force.com or Database.com
-        let request = SFRestAPI.sharedInstance().request(forQuery:"SELECT Name FROM Event__c ORDER BY Name ASC NULLS FIRST LIMIT 3");
+        let request = SFRestAPI.sharedInstance().request(forQuery:"SELECT Event_Name__c FROM Event__c ORDER BY Name ASC NULLS FIRST LIMIT 3");
         SFRestAPI.sharedInstance().send(request, delegate: self);
     }
     func request(_ request: SFRestRequest, didLoadResponse jsonResponse: Any)
@@ -84,14 +93,17 @@ class RootViewController : UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.CloseEvents.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         let obj = dataRows[indexPath.row]
-        cell.textLabel!.text = obj["Name"] as? String
+        cell.textLabel!.text = obj["Event_Name__c"] as? String
         self.log(.debug, msg: "RECORD:: \(obj["Name"] as? String)")
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let obj = dataRows[indexPath.row]
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "EventViewController") as! EventViewController
+        myVC.stringPassed = (obj["Event_Name__c"] as? String)!
+        self.present(myVC, animated: true, completion: nil);
         print("You tapped on cell \(indexPath.row)")
     }
 

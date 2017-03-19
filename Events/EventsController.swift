@@ -14,7 +14,7 @@ class EventsController: UIViewController, UITableViewDataSource, UITableViewDele
     let user = SFUserAccountManager.sharedInstance().currentUser
 
     @IBOutlet weak var EventTable: UITableView!
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +37,11 @@ class EventsController: UIViewController, UITableViewDataSource, UITableViewDele
             super.loadView()
             //self.title = "Mobile SDK Sample App"
     
+            navigationItem.title = "Events"
+
+            
             //Here we use a query that should work on either Force.com or Database.com
-            let request = SFRestAPI.sharedInstance().request(forQuery:"SELECT Name,CreatedById FROM Event__c ORDER BY Name ASC NULLS FIRST");
+            let request = SFRestAPI.sharedInstance().request(forQuery:"SELECT Name,CreatedById,Image__c,Event_Name__c FROM Event__c ORDER BY Name ASC NULLS FIRST");
             SFRestAPI.sharedInstance().send(request, delegate: self);
         }
         func request(_ request: SFRestRequest, didLoadResponse jsonResponse: Any)
@@ -62,16 +65,29 @@ class EventsController: UIViewController, UITableViewDataSource, UITableViewDele
         let cell = self.EventTable.dequeueReusableCell(withIdentifier: "customCell")! as! EventCell
         let obj = dataRows[indexPath.row]
         //cell.textLabel!.text = obj["Name"] as? String
-        cell.eventName!.text = obj["Name"] as? String
+        let imageURL = URL(string: (obj["Image__c"] as? String)!)!
+        let imgData = NSData(contentsOf:imageURL)!
+        cell.myImage.image = UIImage(data:imgData as Data)
+        cell.eventName!.text = obj["Event_Name__c"] as? String
         cell.createdBy!.text = obj["CreatedById"] as? String
         self.log(.debug, msg: "RECORD:: \(obj["Name"] as? String)")
 
         return cell
     }
+
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let obj = dataRows[indexPath.row]
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "EventViewController") as! EventViewController
+        myVC.stringPassed = (obj["Event_Name__c"] as? String)!
+        navigationController?.pushViewController(myVC, animated: true)
+
         print("You tapped on cell \(indexPath.row)")
+//                let obj = dataRows[indexPath.row]
+//                let myVC = storyboard?.instantiateViewController(withIdentifier: "EventViewController") as! EventViewController
+//                myVC.stringPassed = (obj["Event_Name__c"] as? String)!
+//        self.present(myVC, animated: true, completion: nil);
+        //navigationController?.pushViewController(myVC, animated: true)
     }
 //        override func tableView(_ tableView: UITableView?, numberOfRowsInSection section: Int) -> Int
 //        {

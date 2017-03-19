@@ -14,6 +14,10 @@
 		4FD6C4A01B755242002F9F90 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6C49D1B755242002F9F90 /* InitialViewController.swift */; };
 		78A235BD93AB7D080D67CD51 /* Pods_Events.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A29C75280BDF73123F14B4 /* Pods_Events.framework */; };
 		A8398A801E64DD6A001A7451 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8398A7F1E64DD6A001A7451 /* EventCell.swift */; };
+		A866DC441E68A4FB0029B2EB /* TESTBLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866DC431E68A4FB0029B2EB /* TESTBLE.swift */; };
+		A866DC461E6B4C150029B2EB /* MyEventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866DC451E6B4C150029B2EB /* MyEventsController.swift */; };
+		A866DC481E6CB3B10029B2EB /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866DC471E6CB3B10029B2EB /* EventViewController.swift */; };
+		A868C0921E76BD0E00835269 /* SplashScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868C0911E76BD0E00835269 /* SplashScreenController.swift */; };
 		A87474491E3FB6DE00BCE55B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A87474481E3FB6DE00BCE55B /* Main.storyboard */; };
 		A8ED69D71E63498500FFCCBE /* BeaconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED69D61E63498500FFCCBE /* BeaconController.swift */; };
 		A8ED69DC1E638B0500FFCCBE /* BeaconNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED69DB1E638B0500FFCCBE /* BeaconNotificationsManager.swift */; };
@@ -35,6 +39,10 @@
 		762732C14CFE40A989C3AD70 /* Pods-Events.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Events.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Events/Pods-Events.debug.xcconfig"; sourceTree = "<group>"; };
 		82A29C75280BDF73123F14B4 /* Pods_Events.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Events.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8398A7F1E64DD6A001A7451 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		A866DC431E68A4FB0029B2EB /* TESTBLE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TESTBLE.swift; sourceTree = "<group>"; };
+		A866DC451E6B4C150029B2EB /* MyEventsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsController.swift; sourceTree = "<group>"; };
+		A866DC471E6CB3B10029B2EB /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		A868C0911E76BD0E00835269 /* SplashScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenController.swift; sourceTree = "<group>"; };
 		A87474481E3FB6DE00BCE55B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A8ED69CE1E63335500FFCCBE /* EstimoteSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EstimoteSDK.framework; path = "../../Downloads/iOS-SDK-master/EstimoteSDK/EstimoteSDK.framework"; sourceTree = "<group>"; };
 		A8ED69D01E633ED300FFCCBE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -109,6 +117,10 @@
 				A8EFC0581E423360006E82CB /* EventsController.swift */,
 				A8ED69D61E63498500FFCCBE /* BeaconController.swift */,
 				A8398A7F1E64DD6A001A7451 /* EventCell.swift */,
+				A866DC431E68A4FB0029B2EB /* TESTBLE.swift */,
+				A866DC451E6B4C150029B2EB /* MyEventsController.swift */,
+				A866DC471E6CB3B10029B2EB /* EventViewController.swift */,
+				A868C0911E76BD0E00835269 /* SplashScreenController.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -262,11 +274,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A866DC461E6B4C150029B2EB /* MyEventsController.swift in Sources */,
 				4FD6C47A1B754AF1002F9F90 /* AppDelegate.swift in Sources */,
+				A866DC441E68A4FB0029B2EB /* TESTBLE.swift in Sources */,
 				A8398A801E64DD6A001A7451 /* EventCell.swift in Sources */,
 				A8ED69D71E63498500FFCCBE /* BeaconController.swift in Sources */,
+				A866DC481E6CB3B10029B2EB /* EventViewController.swift in Sources */,
 				4FD6C49F1B755242002F9F90 /* RootViewController.swift in Sources */,
 				A8ED69DC1E638B0500FFCCBE /* BeaconNotificationsManager.swift in Sources */,
+				A868C0921E76BD0E00835269 /* SplashScreenController.swift in Sources */,
 				4F393A291C3C8BCD00B3EA13 /* main.swift in Sources */,
 				4FD6C4A01B755242002F9F90 /* InitialViewController.swift in Sources */,
 				A8ED69DE1E638B0E00FFCCBE /* BeaconID.swift in Sources */,
