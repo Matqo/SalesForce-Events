@@ -25,6 +25,7 @@
 import Foundation
 import UIKit
 import SalesforceSDKCore
+//import GoogleMaps
 
 // Fill these in when creating a new Connected Application on Force.com
 //3MVG98_Psg5cppyasQ6Ohn7b5HYhOzYcSHmfIu1r5Tfv54L2qHNf1M1p7oWrOYFeD0FUyZ149zMTQ2O0Sjo7w
@@ -74,6 +75,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate
         let beaconNotificationsManager = BeaconNotificationsManager()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
+        //GMSServices.provideAPIKey("AIzaSyCxfM-A8ZAJ7L1Y_RkOowl-uxnbby2V-4U")
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.initializeAppViewState();
         //self.beaconManager.delegate = self
@@ -84,7 +86,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate
         // if you want to receive push notifications from Salesforce, you will also need to
         // implement the application:didRegisterForRemoteNotificationsWithDeviceToken: method (below).
         //
-        // SFPushNotificationManager.sharedInstance().registerForRemoteNotifications()
+        SFPushNotificationManager.sharedInstance().registerForRemoteNotifications()
         
         //
         //Uncomment the code below to see how you can customize the color, textcolor, font and fontsize of the navigation bar
@@ -117,17 +119,18 @@ class AppDelegate : UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate
         return true
     }
     
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data)
     {
         //
         // Uncomment the code below to register your device token with the push notification manager
         //
         //
-        // SFPushNotificationManager.sharedInstance().didRegisterForRemoteNotifications(withDeviceToken: deviceToken)
-        // if (SFUserAccountManager.sharedInstance().currentUser?.credentials.accessToken != nil)
-        // {
-        //    SFPushNotificationManager.sharedInstance().registerForSalesforceNotifications()
-        // }
+        SFPushNotificationManager.sharedInstance().didRegisterForRemoteNotifications(withDeviceToken: deviceToken)
+        if (SFUserAccountManager.sharedInstance().currentUser?.credentials.accessToken != nil)
+        {
+          SFPushNotificationManager.sharedInstance().registerForSalesforceNotifications()
+        }
     }
     
     

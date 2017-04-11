@@ -11,10 +11,19 @@ import Foundation
 import SalesforceSDKCore
 
 class EventsController: UIViewController, UITableViewDataSource, UITableViewDelegate, SFRestDelegate {
+    
     let user = SFUserAccountManager.sharedInstance().currentUser
+
+    let beaconManager = ESTBeaconManager()
+
+    var refreshControl = UIRefreshControl()
 
     @IBOutlet weak var EventTable: UITableView!
     
+    func pullToRefresh(_ sender : Any){
+        let request = SFRestAPI.sharedInstance().request(forQuery:"SELECT Name,CreatedById,Image__c,Event_Name__c,Id,Latitude__c,Longitude__c FROM Event__c ORDER BY Name ASC NULLS FIRST");
+        SFRestAPI.sharedInstance().send(request, delegate: self);
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +33,15 @@ class EventsController: UIViewController, UITableViewDataSource, UITableViewDele
         self.EventTable.dataSource=self
         self.EventTable.delegate=self
         //self.EventTable.register(EventCell.self, forCellReuseIdentifier: "cell")
-    }
+        self.beaconManager.requestAlwaysAuthorization()
+        pullToRefresh(self)
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh events")
+        refreshControl.addTarget(self, action: #selector(pullToRefresh(_:)), for: UIControlEvents.valueChanged)
+        self.EventTable.addSubview(refreshControl)
+        
+
+   } 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -41,13 +58,13 @@ class EventsController: UIViewController, UITableViewDataSource, UITableViewDele
 
             
             //Here we use a query that should work on either Force.com or Database.com
-            let request = SFRestAPI.sharedInstance().request(forQuery:"SELECT Name,CreatedById,Image__c,Event_Name__c FROM Event__c ORDER BY Name ASC NULLS FIRST");
-            SFRestAPI.sharedInstance().send(request, delegate: self);
+            
         }
         func request(_ request: SFRestRequest, didLoadResponse jsonResponse: Any)
         {
             self.dataRows = (jsonResponse as! NSDictionary)["records"] as! [NSDictionary]
             self.log(.debug, msg: "request:didLoadResponse: #records: \(self.dataRows.count)")
+            refreshControl.endRefreshing()
             DispatchQueue.main.async(execute: {
                 self.EventTable.reloadData()
             })
@@ -69,8 +86,27 @@ class EventsController: UIViewController, UITableViewDataSource, UITableViewDele
         let imgData = NSData(contentsOf:imageURL)!
         cell.myImage.image = UIImage(data:imgData as Data)
         cell.eventName!.text = obj["Event_Name__c"] as? String
-        cell.createdBy!.text = obj["CreatedById"] as? String
-        self.log(.debug, msg: "RECORD:: \(obj["Name"] as? String)")
+        
+        cell.createdBy!.text = ""
+        
+        let latDouble = (((obj["Latitude__c"] as? NSString)!).doubleValue)
+        let lonDouble = (((obj["Longitude__c"] as? NSString)!).doubleValue)
+        let eventCoordinates:CLLocationCoordinate2D = CLLocationCoordinate2DMake(lonDouble,latDouble)
+        let geoCoder = CLGeocoder()
+        geoCoder.reverseGeocodeLocation(CLLocation(latitude: eventCoordinates.latitude,longitude: eventCoordinates.longitude), completionHandler: {
+            (placemarks, error) -> Void in
+            var placeMark: CLPlacemark!
+            placeMark = placemarks?[0]
+            if let zip = placeMark.addressDictionary!["ZIP"] as? NSString {
+                cell.createdBy!.text?.append((zip as String) as String + ", ")
+            }
+            if let country = placeMark.addressDictionary!["Country"] as? NSString {
+                cell.createdBy!.text?.append((country as String) as String)
+            }
+        })
+        
+        
+        //self.log(.debug, msg: "RECORD:: \(obj["Name"] as? String)")
 
         return cell
     }
@@ -80,9 +116,14 @@ class EventsController: UIViewController, UITableViewDataSource, UITableViewDele
         let obj = dataRows[indexPath.row]
         let myVC = storyboard?.instantiateViewController(withIdentifier: "EventViewController") as! EventViewController
         myVC.stringPassed = (obj["Event_Name__c"] as? String)!
+        myVC.ID = (obj["Id"] as? String)!
+        myVC.longitude=(obj["Longitude__c"] as? String)!
+        myVC.latitude=(obj["Latitude__c"] as? String)!
+        
         navigationController?.pushViewController(myVC, animated: true)
 
         print("You tapped on cell \(indexPath.row)")
+        //print(obj["Id"] as? String!)
 //                let obj = dataRows[indexPath.row]
 //                let myVC = storyboard?.instantiateViewController(withIdentifier: "EventViewController") as! EventViewController
 //                myVC.stringPassed = (obj["Event_Name__c"] as? String)!

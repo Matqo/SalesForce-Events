@@ -90,6 +90,7 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
         //SFRestAPI.sharedInstance().
         
         //SFRestAPI.sharedInstance().send(deleteRequest, delegate: self);
+        //SFRestAPI.sharedInstance().
     }
     func request(_ request: SFRestRequest, didLoadResponse jsonResponse: Any)
     {
