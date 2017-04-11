@@ -27,6 +27,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 Copyright 2015 Estimote, Inc. All rights reserved.
 
 
+## GoogleMaps
+
+Copyright 2017 Google
+
 ## SQLCipher
 
 Copyright (c) 2008, ZETETIC LLC
