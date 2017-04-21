@@ -24,12 +24,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 ## EstimoteSDK
 
-Copyright 2015 Estimote, Inc. All rights reserved.
+Copyright 2017 Estimote, Inc. All rights reserved.
 
-
-## GoogleMaps
-
-Copyright 2017 Google
 
 ## SQLCipher
 
