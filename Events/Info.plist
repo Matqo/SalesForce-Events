@@ -44,6 +44,12 @@ LSApplicationQueriesSchemes
 	<string>BLE is required to determine proximity from events</string>
 	<key>SFDCOAuthLoginHost</key>
 	<string>eventz-developer-edition.eu11.force.com</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+		<string>fetch</string>
+		<string>location</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

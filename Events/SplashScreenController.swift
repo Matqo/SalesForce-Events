@@ -18,17 +18,41 @@ class SplashScreenController: UIViewController, SFRestDelegate
         super.viewDidLoad()
 
         if(auth.haveValidSession){
-            showTabBarController()
+            //showTabBarController()
+			if(!UIApplication.shared.isRegisteredForRemoteNotifications){
+				SFPushNotificationManager.sharedInstance().registerForRemoteNotifications()
+			}
+				showTabBarController()
+//			if(UIApplication.shared.isRegisteredForRemoteNotifications){
+//				showTabBarController()
+//			}
+			
         }
 
         
     }
+	
+
     
     func showTabBarController(){
-        
+        if(UIApplication.shared.isRegisteredForRemoteNotifications){
         DispatchQueue.main.async  {
             self.performSegue(withIdentifier: "TabBarSegue", sender: self)
         }
+		}else{
+			while(!UIApplication.shared.isRegisteredForRemoteNotifications){
+			// Do nothing
+				#if (arch(i386) || arch(x86_64)) && os(iOS)
+					break
+				#endif
+
+
+			}
+			DispatchQueue.main.async  {
+				self.performSegue(withIdentifier: "TabBarSegue", sender: self)
+			}
+			
+		}
         //let storyboard = UIStoryboard(name: "Main", bundle: nil)
         //let vc = storyboard.instantiateViewController(withIdentifier: "TabBarController") as UIViewController
         //self.navigationController?.pushViewController(vc, animated: true)

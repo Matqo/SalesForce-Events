@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)com.events.Events</string>
+		<string>$(AppIdentifierPrefix)com.Salesforce.iBeaconEvents</string>
 	</array>
 </dict>
 </plist>

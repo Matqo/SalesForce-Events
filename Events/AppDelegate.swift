@@ -86,7 +86,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate
         // if you want to receive push notifications from Salesforce, you will also need to
         // implement the application:didRegisterForRemoteNotificationsWithDeviceToken: method (below).
         //
-        SFPushNotificationManager.sharedInstance().registerForRemoteNotifications()
+		
+        //SFPushNotificationManager.sharedInstance().registerForRemoteNotifications()
         
         //
         //Uncomment the code below to see how you can customize the color, textcolor, font and fontsize of the navigation bar

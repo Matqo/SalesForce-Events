@@ -13,7 +13,15 @@
 		4FD6C49F1B755242002F9F90 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6C49C1B755242002F9F90 /* RootViewController.swift */; };
 		4FD6C4A01B755242002F9F90 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6C49D1B755242002F9F90 /* InitialViewController.swift */; };
 		78A235BD93AB7D080D67CD51 /* Pods_Events.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A29C75280BDF73123F14B4 /* Pods_Events.framework */; };
+		A8240A2A1E9EB5CC009B993F /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8240A291E9EB5CC009B993F /* EventCollectionViewCell.swift */; };
+		A8240A2C1EA0FA91009B993F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8240A2B1EA0FA91009B993F /* MapViewController.swift */; };
+		A8240A2F1EA13110009B993F /* ImageEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8240A2E1EA13110009B993F /* ImageEventTableViewCell.swift */; };
 		A8398A801E64DD6A001A7451 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8398A7F1E64DD6A001A7451 /* EventCell.swift */; };
+		A842BC951EA29903002469AB /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A842BC941EA29903002469AB /* TitleTableViewCell.swift */; };
+		A842BC971EA3BB95002469AB /* AboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A842BC961EA3BB95002469AB /* AboutTableViewCell.swift */; };
+		A842BC9B1EA3C2A6002469AB /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A842BC9A1EA3C2A6002469AB /* DescriptionTableViewCell.swift */; };
+		A842BC9D1EA3DFCD002469AB /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A842BC9C1EA3DFCD002469AB /* LocationTableViewCell.swift */; };
+		A842BC9F1EA3DFDB002469AB /* AttendanceButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A842BC9E1EA3DFDB002469AB /* AttendanceButtonTableViewCell.swift */; };
 		A85925E11E8C110B007AB291 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85925E01E8C110B007AB291 /* MapAnnotation.swift */; };
 		A866DC441E68A4FB0029B2EB /* TESTBLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866DC431E68A4FB0029B2EB /* TESTBLE.swift */; };
 		A866DC461E6B4C150029B2EB /* MyEventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866DC451E6B4C150029B2EB /* MyEventsController.swift */; };
@@ -39,7 +47,15 @@
 		4FF12F8A1DCA91F5004D9EF9 /* Events.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Events.entitlements; sourceTree = "<group>"; };
 		762732C14CFE40A989C3AD70 /* Pods-Events.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Events.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Events/Pods-Events.debug.xcconfig"; sourceTree = "<group>"; };
 		82A29C75280BDF73123F14B4 /* Pods_Events.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Events.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8240A291E9EB5CC009B993F /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
+		A8240A2B1EA0FA91009B993F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A8240A2E1EA13110009B993F /* ImageEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageEventTableViewCell.swift; sourceTree = "<group>"; };
 		A8398A7F1E64DD6A001A7451 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		A842BC941EA29903002469AB /* TitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		A842BC961EA3BB95002469AB /* AboutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
+		A842BC9A1EA3C2A6002469AB /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		A842BC9C1EA3DFCD002469AB /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		A842BC9E1EA3DFDB002469AB /* AttendanceButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceButtonTableViewCell.swift; sourceTree = "<group>"; };
 		A85925E01E8C110B007AB291 /* MapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
 		A866DC431E68A4FB0029B2EB /* TESTBLE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TESTBLE.swift; sourceTree = "<group>"; };
 		A866DC451E6B4C150029B2EB /* MyEventsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsController.swift; sourceTree = "<group>"; };
@@ -108,6 +124,7 @@
 		4FD6C4A11B755265002F9F90 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A8240A2D1EA12F72009B993F /* EventTableCells */,
 				A8ED69DD1E638B0E00FFCCBE /* BeaconID.swift */,
 				A8ED69DB1E638B0500FFCCBE /* BeaconNotificationsManager.swift */,
 				4FD6C49A1B755242002F9F90 /* Bridging-Header.h */,
@@ -124,6 +141,8 @@
 				A866DC471E6CB3B10029B2EB /* EventViewController.swift */,
 				A868C0911E76BD0E00835269 /* SplashScreenController.swift */,
 				A85925E01E8C110B007AB291 /* MapAnnotation.swift */,
+				A8240A291E9EB5CC009B993F /* EventCollectionViewCell.swift */,
+				A8240A2B1EA0FA91009B993F /* MapViewController.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -138,6 +157,19 @@
 				82A29C75280BDF73123F14B4 /* Pods_Events.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A8240A2D1EA12F72009B993F /* EventTableCells */ = {
+			isa = PBXGroup;
+			children = (
+				A8240A2E1EA13110009B993F /* ImageEventTableViewCell.swift */,
+				A842BC941EA29903002469AB /* TitleTableViewCell.swift */,
+				A842BC961EA3BB95002469AB /* AboutTableViewCell.swift */,
+				A842BC9A1EA3C2A6002469AB /* DescriptionTableViewCell.swift */,
+				A842BC9C1EA3DFCD002469AB /* LocationTableViewCell.swift */,
+				A842BC9E1EA3DFDB002469AB /* AttendanceButtonTableViewCell.swift */,
+			);
+			name = EventTableCells;
 			sourceTree = "<group>";
 		};
 		DDFDDF0A29E4BDD114B51BBC /* Pods */ = {
@@ -187,6 +219,9 @@
 						DevelopmentTeam = GZ3CDHH99G;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
@@ -281,19 +316,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				A866DC461E6B4C150029B2EB /* MyEventsController.swift in Sources */,
+				A8240A2A1E9EB5CC009B993F /* EventCollectionViewCell.swift in Sources */,
 				4FD6C47A1B754AF1002F9F90 /* AppDelegate.swift in Sources */,
+				A842BC971EA3BB95002469AB /* AboutTableViewCell.swift in Sources */,
 				A866DC441E68A4FB0029B2EB /* TESTBLE.swift in Sources */,
 				A8398A801E64DD6A001A7451 /* EventCell.swift in Sources */,
 				A8ED69D71E63498500FFCCBE /* BeaconController.swift in Sources */,
 				A866DC481E6CB3B10029B2EB /* EventViewController.swift in Sources */,
 				4FD6C49F1B755242002F9F90 /* RootViewController.swift in Sources */,
 				A8ED69DC1E638B0500FFCCBE /* BeaconNotificationsManager.swift in Sources */,
+				A842BC9F1EA3DFDB002469AB /* AttendanceButtonTableViewCell.swift in Sources */,
 				A868C0921E76BD0E00835269 /* SplashScreenController.swift in Sources */,
 				A85925E11E8C110B007AB291 /* MapAnnotation.swift in Sources */,
+				A8240A2F1EA13110009B993F /* ImageEventTableViewCell.swift in Sources */,
 				4F393A291C3C8BCD00B3EA13 /* main.swift in Sources */,
 				4FD6C4A01B755242002F9F90 /* InitialViewController.swift in Sources */,
+				A842BC9D1EA3DFCD002469AB /* LocationTableViewCell.swift in Sources */,
 				A8ED69DE1E638B0E00FFCCBE /* BeaconID.swift in Sources */,
+				A842BC9B1EA3C2A6002469AB /* DescriptionTableViewCell.swift in Sources */,
 				A8EFC0591E423360006E82CB /* EventsController.swift in Sources */,
+				A842BC951EA29903002469AB /* TitleTableViewCell.swift in Sources */,
+				A8240A2C1EA0FA91009B993F /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +443,7 @@
 				INFOPLIST_FILE = Events/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.SalesforceEvents-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Salesforce.iBeaconEvents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Events/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -418,7 +461,7 @@
 				INFOPLIST_FILE = Events/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.SalesforceEvents-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Salesforce.iBeaconEvents;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Events/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
