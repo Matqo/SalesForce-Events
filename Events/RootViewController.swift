@@ -32,80 +32,78 @@ class RootViewController : UIViewController, UITableViewDataSource, UITableViewD
 	
 	let beaconManager = ESTBeaconManager()
 	let deviceManager = ESTDeviceManager()
-
+	
 	let beaconRegion = CLBeaconRegion(
 		proximityUUID: UUID(uuidString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!,
 		identifier: "ranged region")
 	
-
+	
 	func beaconManager(_ manager: Any, didRangeBeacons beacons: [CLBeacon],
-                   in region: CLBeaconRegion) {
-	let knownBeacons = beacons.filter{$0.proximity != CLProximity.unknown}
-	//proximityEvents.removeAll()
+	                   in region: CLBeaconRegion) {
+		let knownBeacons = beacons.filter{$0.proximity != CLProximity.unknown}
+		//proximityEvents.removeAll()
 		for index in 0..<proximityEvents.count{
 			proximityEvents[index]["Distance_From"] = Int.max
 		}
-	if	(knownBeacons.count == 0){
-//		proximityEvents.removeAll()
-//
-//		DispatchQueue.main.async(execute: {
-//			self.CloseEvents.reloadData()
-//		})
-	}
-		
-	else if (knownBeacons.count > 0) {
-		for beacon in knownBeacons{
-			//print(beacon.accuracy)
-
-			for i in 0..<dataRows.count{
-				let major:NSNumber = NSNumber(value:(dataRows[i]["Major__c"] as! NSString).integerValue)
-				let minor:NSNumber = NSNumber(value:(dataRows[i]["Minor__c"] as! NSString).integerValue)
-				if(beacon.major==major && beacon.minor==minor){
-					print(dataRows[i]["Event_Name__c"] as? String)
-					//print(beacon.proximity.rawValue)
-					dataRows[i]["Distance_From"]=beacon.proximity.rawValue
-//					let temperatureNotification = ESTTelemetryNotificationTemperature { (temperature) in
-//						print("Current temperature: \(temperature.temperatureInCelsius) C")
-//						self.dataRows[i]["Temperature"]=temperature.temperatureInCelsius
-//						print(beacon.beaconID.asString)
-//						
-//					}
-//					
-//					deviceManager.register(forTelemetryNotification: temperatureNotification)
-//					let myTemp = ESTTelemetryInfoTemperature.init(shortIdentifier: "")
-
-					
-					var found = false
-					for j in 0..<proximityEvents.count{
-						if(dataRows[i]["Name"] as? String == proximityEvents[j]["Name"] as? String){
-							proximityEvents[j] = dataRows[i]
-							found = true
-						}
-					}
-					if(found == false){
-						proximityEvents.append(dataRows[i])
-					}
-					//proximityEvents.insert(dataRows[i], at: i)
-				DispatchQueue.main.async(execute: {
-						self.EventCollection.reloadData()
-					})
-				}
-
-			}
+		if	(knownBeacons.count == 0){
+			//		proximityEvents.removeAll()
+			//
+			//		DispatchQueue.main.async(execute: {
+			//			self.CloseEvents.reloadData()
+			//		})
 		}
-        //let closestBeacon = knownBeacons[0] as CLBeacon
-
-
-    }
-
-}
-
+			
+		else if (knownBeacons.count > 0) {
+			for beacon in knownBeacons{
+				//print(beacon.accuracy)
+				
+				for i in 0..<dataRows.count{
+					let major:NSNumber = NSNumber(value:(dataRows[i]["Major__c"] as! NSString).integerValue)
+					let minor:NSNumber = NSNumber(value:(dataRows[i]["Minor__c"] as! NSString).integerValue)
+					if(beacon.major==major && beacon.minor==minor){
+						print(dataRows[i]["Event_Name__c"] as? String)
+						//print(beacon.proximity.rawValue)
+						dataRows[i]["Distance_From"]=beacon.proximity.rawValue
+						if let telemetryID = (dataRows[i]["Telemetry_ID__c"] as? String){
+											let temperatureNotification = ESTTelemetryNotificationTemperature { (temperature) in
+												if(temperature.shortIdentifier == telemetryID){
+												print("Current temperature: \(temperature.temperatureInCelsius) C")
+												self.dataRows[i]["Temperature"]=temperature.temperatureInCelsius
+												}
+											}
+											deviceManager.register(forTelemetryNotification: temperatureNotification)
+										}
+						var found = false
+						for j in 0..<proximityEvents.count{
+							if(dataRows[i]["Name"] as? String == proximityEvents[j]["Name"] as? String){
+								proximityEvents[j] = dataRows[i]
+								found = true
+							}
+						}
+						if(found == false){
+							proximityEvents.append(dataRows[i])
+						}
+						//proximityEvents.insert(dataRows[i], at: i)
+						//				DispatchQueue.main.async(execute: {
+						//						self.EventCollection.reloadData()
+						//					})
+					}
+					
+				}
+			}
+			//let closestBeacon = knownBeacons[0] as CLBeacon
+			
+			
+		}
+		
+	}
+	
 	
 	
 	let user = SFUserAccountManager.sharedInstance().currentUser
 	let auth = SFAuthenticationManager.shared()
 	@IBOutlet weak var CloseEvents: UITableView!
-	@IBOutlet weak var fullName: UILabel!	
+	@IBOutlet weak var fullName: UILabel!
 	@IBOutlet var EventCollection: UICollectionView!
 	
 	var logoutButton = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.plain, target: self, action: #selector(SFLogout(sender:)))
@@ -137,16 +135,16 @@ class RootViewController : UIViewController, UITableViewDataSource, UITableViewD
 		self.CloseEvents.register(UITableViewCell.self, forCellReuseIdentifier:"cell")
 		self.CloseEvents.dataSource=self
 		self.CloseEvents.delegate=self
-//		
-//		self.EventCollection.register(EventCollectionViewCell.self, forCellWithReuseIdentifier: "EventCollectionCell")
-//		self.EventCollection.dataSource=self
-//		self.EventCollection.delegate=self
+		//
+		//		self.EventCollection.register(EventCollectionViewCell.self, forCellWithReuseIdentifier: "EventCollectionCell")
+		//		self.EventCollection.dataSource=self
+		//		self.EventCollection.delegate=self
 		//self.mail.text = user.email
 		
 		//self.userName.text = request.
 		
-
-
+		
+		
 	}
 	var dataRows = [Dictionary<String, Any>]()
 	var proximityEvents = [Dictionary<String, Any>]()
@@ -157,7 +155,7 @@ class RootViewController : UIViewController, UITableViewDataSource, UITableViewD
 		//self.title = "Mobile SDK Sample App"
 		
 		//Here we use a query that should work on either Force.com or Database.com
-		let request = SFRestAPI.sharedInstance().request(forQuery:"SELECT Id,Description__c,Date__c,Image__c,Name,Event_Name__c,Major__c,Minor__c,Latitude__c,Longitude__c FROM Event__c ORDER BY CreatedDate DESC");
+		let request = SFRestAPI.sharedInstance().request(forQuery:"SELECT Id,Description__c,Date__c,Image__c,Name,Event_Name__c,Major__c,Minor__c,Latitude__c,Longitude__c,Telemetry_ID__c FROM Event__c ORDER BY CreatedDate DESC");
 		SFRestAPI.sharedInstance().send(request, delegate: self);
 	}
 	
@@ -165,9 +163,9 @@ class RootViewController : UIViewController, UITableViewDataSource, UITableViewD
 	{
 		self.dataRows = ((jsonResponse as! NSDictionary)["records"] as! [NSDictionary]) as! [Dictionary<String,Any>] //(jsonResponse as! NSDictionary)["records"] as! [NSDictionary]
 		self.log(.debug, msg: "request:didLoadResponse: #records: \(jsonResponse)")
-//		for row in dataRows{
-//			modifiedRows["Event_Name__c"] = row["Event_Name__c"] as! NSString as String
-//		}
+		//		for row in dataRows{
+		//			modifiedRows["Event_Name__c"] = row["Event_Name__c"] as! NSString as String
+		//		}
 		proximityEvents.reserveCapacity(dataRows.count)
 		DispatchQueue.main.async(execute: {
 			self.CloseEvents.reloadData()
@@ -177,13 +175,13 @@ class RootViewController : UIViewController, UITableViewDataSource, UITableViewD
 	//        {
 	//            return 1
 	//        }
-
+	
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if(dataRows.count>0){
-		return 1
+			return 1
 		}else{
-		return 0}
+			return 0}
 	}
 	//var items=["Dog","Cat"]
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -219,7 +217,7 @@ class RootViewController : UIViewController, UITableViewDataSource, UITableViewD
 			var placeMark: CLPlacemark!
 			placeMark = placemarks?[0]
 			if let zip = placeMark.addressDictionary!["City"] as? NSString {
-				cell.createdBy!.text?.append((zip as String) as String + ",\n")
+				cell.createdBy!.text = ((zip as String) as String + ",\n")
 			}
 			if let country = placeMark.addressDictionary!["Country"] as? NSString {
 				cell.createdBy!.text?.append((country as String) as String)
@@ -237,7 +235,7 @@ class RootViewController : UIViewController, UITableViewDataSource, UITableViewD
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let obj = proximityEvents[indexPath.row]
+		let obj = dataRows[indexPath.row]
 		let myVC = storyboard?.instantiateViewController(withIdentifier: "EventViewController") as! EventViewController
 		myVC.stringPassed = (obj["Event_Name__c"] as? String)!
 		myVC.ID = (obj["Id"] as? String)!
@@ -256,7 +254,7 @@ class RootViewController : UIViewController, UITableViewDataSource, UITableViewD
 		print("You tapped on cell \(indexPath.row)")
 	}
 	
-
+	
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		proximityEvents.sort {
@@ -277,24 +275,39 @@ class RootViewController : UIViewController, UITableViewDataSource, UITableViewD
 		let imgData = NSData(contentsOf:imageURL)!
 		collectionCell.image.image = UIImage(data:imgData as Data)
 		collectionCell.eventDetail!.text = obj["Event_Name__c"] as? String
-		collectionCell.distanceFrom!.text = ("Distance from event ± \(distance)m")
+		if(distance != Int.max){
+		collectionCell.distanceFrom!.text = ("Distance from event ~ \(distance)m")
+		}else{
+		collectionCell.distanceFrom!.text = ("Event is out of range")
+		}
 		if(obj["Temperature"] != nil){
-		collectionCell.eventDetail!.text?.append(", : \((obj["Temperature"] as? Int)!)C")
+			collectionCell.temperature!.text = ("Temperature at the event: \((obj["Temperature"] as? Int)!)°C")
+		}else{
+			collectionCell.temperature!.text = "Temperature information unavailable"
 		}
 		//self.log(.debug, msg: "RECORD:: \(obj["Name"] as? String)")
 		
 		return collectionCell
 	}
 	
-
+	
+	var reloadTimer: Timer!
+	func runTimedCode() {
+		DispatchQueue.main.async(execute: {
+			self.EventCollection.reloadData()
+		})
+	}
+	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		self.beaconManager.startRangingBeacons(in: self.beaconRegion)
+		reloadTimer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
 	}
 	
 	override func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
 		self.beaconManager.stopRangingBeacons(in: self.beaconRegion)
+		
 		proximityEvents.removeAll()
 		DispatchQueue.main.async(execute: {
 			self.CloseEvents.reloadData()

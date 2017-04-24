@@ -10,7 +10,7 @@ import UIKit
 
 class TitleTableViewCell: UITableViewCell {
 	@IBOutlet var Title: UILabel!
-
+	@IBOutlet var dateTime: UILabel!
 	@IBOutlet var month: UILabel!
 	@IBOutlet var dateDay: UILabel!
     override func awakeFromNib() {

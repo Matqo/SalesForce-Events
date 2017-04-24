@@ -25,7 +25,7 @@
 import Foundation
 import UIKit
 import SalesforceSDKCore
-//import GoogleMaps
+import UserNotifications
 
 // Fill these in when creating a new Connected Application on Force.com
 //3MVG98_Psg5cppyasQ6Ohn7b5HYhOzYcSHmfIu1r5Tfv54L2qHNf1M1p7oWrOYFeD0FUyZ149zMTQ2O0Sjo7w
@@ -72,7 +72,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate
     }
     
     // MARK: - App delegate lifecycle
-        let beaconNotificationsManager = BeaconNotificationsManager()
+        //let beaconNotificationsManager = BeaconNotificationsManager()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
         //GMSServices.provideAPIKey("AIzaSyCxfM-A8ZAJ7L1Y_RkOowl-uxnbby2V-4U")
@@ -133,8 +133,27 @@ class AppDelegate : UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate
           SFPushNotificationManager.sharedInstance().registerForSalesforceNotifications()
         }
     }
-    
-    
+
+	
+
+//        func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> ()) {
+//
+//					let notification = UILocalNotification()
+//					notification.alertBody = "You received a remote notification!"
+//					UIApplication.shared.presentLocalNotificationNow(notification)
+//    }
+
+	 func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+    //let notif = JSON(userInfo) // SwiftyJSON required
+							let notification = UILocalNotification()
+							notification.alertBody = "You received a remote notification!"
+							UIApplication.shared.presentLocalNotificationNow(notification)
+		//if notif["callback"]["type"] != nil{
+    //NotificationCenter.default.post(name: Notification.Name(rawValue: "myNotif"), object: nil)
+    // This is where you read your JSON to know what kind of notification you received, for example :    
+
+}
+
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error )
     {
         // Respond to any push notification registration errors here.

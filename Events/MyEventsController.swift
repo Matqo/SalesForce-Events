@@ -37,7 +37,7 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 		if (knownBeacons.count > 0) {
 			for beacon in knownBeacons{
 				//print(beacon.accuracy)
-				
+				var visited = false
 				for i in 0..<modifiedNDataRows.count{
 					let major:NSNumber = NSNumber(value:(modifiedNDataRows[i]["Major__c"] as! NSString).integerValue)
 					let minor:NSNumber = NSNumber(value:(modifiedNDataRows[i]["Minor__c"] as! NSString).integerValue)
@@ -46,7 +46,8 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 						modifiedNDataRows[i]["Distance_From"]=beacon.proximity.rawValue
 						proximityEvents.append(modifiedNDataRows[i])
 						
-						if(beacon.proximity.rawValue < 2 ){
+						if(beacon.proximity.rawValue < 2 && !visited){
+							visited = true
 							let notification = UILocalNotification()
 							var attendanceID = ""
 							if(getID.count != 0){
@@ -61,7 +62,7 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 								
 								//var uID = (user?.accountIdentity.userId)!
 								//var eID = (nDataRows[i]["Event_ID__C"] as? String)!
-								//self.log(.debug, msg: "You arrived at  \(nDataRows[i]["Event_Name__c"])")
+							//self.log(.debug, msg: "You arrived at  \(nDataRows[i]["Event_Name__c"])")
 								SFRestAPI.sharedInstance().performUpdate(
 									withObjectType: "Events_Users__c",
 									objectId: attendanceID,
@@ -72,7 +73,8 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 										
 								}) { (complete: [AnyHashable : Any]?) in
 									self.log(.debug, msg: "Success" )
-									notification.alertBody = "You have arrived at \(self.modifiedNDataRows[i]["Event_Name__c"])!"
+									let eventName = (self.modifiedNDataRows[i]["Event_Name__c"] as? String)!
+									notification.alertBody = "You have arrived at \(eventName)"
 									UIApplication.shared.presentLocalNotificationNow(notification)
 									self.proximityEvents.removeAll()
 									self.refresh(self)
@@ -93,9 +95,9 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 						nDataRows = nDataRows.filter{ $0["Id"] as? String != modifiedNDataRows[i]["Id"] as? String}
 						//}
 						//proximityEvents.insert(dataRows[i], at: i)
-						DispatchQueue.main.async(execute: {
-							self.EventTable.reloadData()
-						})
+//						DispatchQueue.main.async(execute: {
+//							self.EventTable.reloadData()
+//						})
 					}
 					
 				}
@@ -138,7 +140,10 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 				}
 				if let country = placeMark.addressDictionary!["Country"] as? NSString {
 					address.append((country as String) as String)
-					updatedResults.append(["Id":eventID,"cAddress":address])
+					let imageURL = URL(string: (addresses.first?["Image__c"] as? String)!)!
+					let imgData = NSData(contentsOf:imageURL)!
+					updatedResults.append(["Id":eventID,"cAddress":address,"imageData":imgData])
+					
 				}
 				let remainingRows = [Dictionary<String, Any>](addresses[1..<addresses.count])
 				geoCode(addresses: remainingRows, results: updatedResults, completion: completion)
@@ -158,10 +163,9 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 	override func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
 		//self.beaconManager.stopRangingBeacons(in: self.beaconRegion)
-		proximityEvents.removeAll()
+
 		backgroundUpdate = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
-		nDataRows.removeAll()
-		modifiedNDataRows.removeAll()
+		
 		
 	}
 	
@@ -195,7 +199,6 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 		self.EventTable.dataSource=self
 		self.EventTable.delegate=self
 		//self.EventTable.register(EventCell.self, forCellReuseIdentifier: "cell")
-		reloadTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
 
 	}
 	
@@ -244,7 +247,7 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 		SFRestAPI.sharedInstance().send(attendedRequest, delegate: self);
 		SFRestAPI.sharedInstance().send(toAttendRequest, delegate: self);
 		
-		let getIdQuery = "SELECT Id,Event_ID__c FROM Events_Users__c"
+		let getIdQuery = "SELECT Id,Event_ID__c FROM Events_Users__c WHERE User_ID__c = \'"+(user?.accountIdentity.userId)!+"\'"
 		let getIDq = SFRestAPI.sharedInstance().request(forQuery:getIdQuery);
 		
 		
@@ -288,6 +291,7 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 		
 	}
 	
+	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		//		tableSections = 0
 		//		var sections = 0
@@ -329,6 +333,7 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 		//		}
 		//		else{return 0}
 		//		}
+		
 		
 		
 		
@@ -381,12 +386,9 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 			print(indexPath.row)
 			var obj = proximityEvents[indexPath.row]
 			//cell.textLabel!.text = obj["Name"] as? String
-			let imageURL = URL(string: (obj["Image__c"] as? String)!)!
-			let imgData = NSData(contentsOf:imageURL)!
 			let distance = ((obj["Distance_From"] as? Int)!)
-			cell.Distance!.text?.append(" < \(distance)m")
-			cell.myImage.image = UIImage(data:imgData as Data)
-			cell.eventName!.text = obj["Event_Name__c"] as? String
+			cell.Distance!.text = (" < \(distance)m")
+						cell.eventName!.text = obj["Event_Name__c"] as? String
 			self.log(.debug, msg: "RECORD:: \(obj["Name"] as? String)")
 			
 			let eventDate = obj["Date__c"] as? String
@@ -408,6 +410,8 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 				let resultId = nResults[i]["Id"] as? String
 				if(resultId == obj["Id"] as? String){
 					cell.createdBy.text = nResults[i]["cAddress"] as? String
+					let imgData = nResults[i]["imageData"] as? Data
+					cell.myImage.image = UIImage(data:imgData as! Data)
 				}
 			}
 			return cell
@@ -419,10 +423,8 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 			print(indexPath.row)
 			var obj = nDataRows[indexPath.row]
 			//cell.textLabel!.text = obj["Name"] as? String
-			let imageURL = URL(string: (obj["Image__c"] as? String)!)!
-			let imgData = NSData(contentsOf:imageURL)!
-			cell.myImage.image = UIImage(data:imgData as Data)
 			cell.eventName!.text = obj["Event_Name__c"] as? String
+			cell.Distance.text = ""
 			self.log(.debug, msg: "RECORD:: \(obj["Name"] as? String)")
 			
 			let eventDate = obj["Date__c"] as? String
@@ -441,6 +443,8 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 				let resultId = nResults[i]["Id"] as? String
 				if(resultId == obj["Id"] as? String){
 					cell.createdBy.text = nResults[i]["cAddress"] as? String
+					let imgData = nResults[i]["imageData"] as? Data
+					cell.myImage.image = UIImage(data:imgData as! Data)
 				}
 			}
 
@@ -450,10 +454,8 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 			let cell = self.EventTable.dequeueReusableCell(withIdentifier: "customCells")! as! myEventCell
 			var obj = dataRows[indexPath.row]
 			//cell.textLabel!.text = obj["Name"] as? String
-			let imageURL = URL(string: (obj["Image__c"] as? String)!)!
-			let imgData = NSData(contentsOf:imageURL)!
-			cell.myImage.image = UIImage(data:imgData as Data)
 			cell.eventName!.text = obj["Event_Name__c"] as? String
+			cell.Distance.text = ""
 			self.log(.debug, msg: "RECORD:: \(obj["Name"] as? String)")
 			
 			let eventDate = obj["Date__c"] as? String
@@ -474,6 +476,8 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 				let resultId = oResults[i]["Id"] as? String
 				if(resultId == obj["Id"] as? String){
 					cell.createdBy.text = oResults[i]["cAddress"] as? String
+					let imgData = oResults[i]["imageData"] as? Data
+					cell.myImage.image = UIImage(data:imgData as! Data)
 				}
 			}
 
@@ -545,10 +549,17 @@ class MyEventsController: UIViewController, UITableViewDataSource, UITableViewDe
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+//		nDataRows.removeAll()
+//		dataRows.removeAll()
+//		oResults.removeAll()
+//		nResults.removeAll()
+//		proximityEvents.removeAll()
+//		getID.removeAll()
 		self.beaconManager.startRangingBeacons(in: self.beaconRegion)
 		refresh(self)
 		
-		
+		reloadTimer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+
 	}
 	
 	var backgroundUpdate: UIBackgroundTaskIdentifier!

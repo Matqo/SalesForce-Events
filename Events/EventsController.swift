@@ -137,7 +137,7 @@ func runTimedCode() {
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh events")
         refreshControl.addTarget(self, action: #selector(pullToRefresh(_:)), for: UIControlEvents.valueChanged)
         self.EventTable.addSubview(refreshControl)
-		reloadTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+		reloadTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
 
 
    }
@@ -216,6 +216,8 @@ func runTimedCode() {
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		if(proximityEvents.count == 0 && section == 0){
+			return 0.0001
+		}else if(dataRows.count == 0 && section == 1){
 			return 0.0001
 		}else{
 			return 30

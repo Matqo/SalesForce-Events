@@ -23,16 +23,23 @@
 		A842BC9D1EA3DFCD002469AB /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A842BC9C1EA3DFCD002469AB /* LocationTableViewCell.swift */; };
 		A842BC9F1EA3DFDB002469AB /* AttendanceButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A842BC9E1EA3DFDB002469AB /* AttendanceButtonTableViewCell.swift */; };
 		A85925E11E8C110B007AB291 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85925E01E8C110B007AB291 /* MapAnnotation.swift */; };
-		A866DC441E68A4FB0029B2EB /* TESTBLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866DC431E68A4FB0029B2EB /* TESTBLE.swift */; };
 		A866DC461E6B4C150029B2EB /* MyEventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866DC451E6B4C150029B2EB /* MyEventsController.swift */; };
 		A866DC481E6CB3B10029B2EB /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866DC471E6CB3B10029B2EB /* EventViewController.swift */; };
 		A868C0921E76BD0E00835269 /* SplashScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A868C0911E76BD0E00835269 /* SplashScreenController.swift */; };
 		A87474491E3FB6DE00BCE55B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A87474481E3FB6DE00BCE55B /* Main.storyboard */; };
-		A8ED69D71E63498500FFCCBE /* BeaconController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED69D61E63498500FFCCBE /* BeaconController.swift */; };
-		A8ED69DC1E638B0500FFCCBE /* BeaconNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED69DB1E638B0500FFCCBE /* BeaconNotificationsManager.swift */; };
-		A8ED69DE1E638B0E00FFCCBE /* BeaconID.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ED69DD1E638B0E00FFCCBE /* BeaconID.swift */; };
+		A8BE1ABC1EABFE3A00A0A318 /* EventsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BE1ABB1EABFE3A00A0A318 /* EventsTests.swift */; };
 		A8EFC0591E423360006E82CB /* EventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8EFC0581E423360006E82CB /* EventsController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A8BE1ABE1EABFE3A00A0A318 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4FD6C46C1B754AF1002F9F90 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4FD6C4731B754AF1002F9F90;
+			remoteInfo = Events;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		045D1C5BC2F1EADFDFB3671E /* Pods-Events.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Events.release.xcconfig"; path = "Pods/Target Support Files/Pods-Events/Pods-Events.release.xcconfig"; sourceTree = "<group>"; };
@@ -57,18 +64,17 @@
 		A842BC9C1EA3DFCD002469AB /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		A842BC9E1EA3DFDB002469AB /* AttendanceButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceButtonTableViewCell.swift; sourceTree = "<group>"; };
 		A85925E01E8C110B007AB291 /* MapAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
-		A866DC431E68A4FB0029B2EB /* TESTBLE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TESTBLE.swift; sourceTree = "<group>"; };
 		A866DC451E6B4C150029B2EB /* MyEventsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsController.swift; sourceTree = "<group>"; };
 		A866DC471E6CB3B10029B2EB /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		A868C0911E76BD0E00835269 /* SplashScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenController.swift; sourceTree = "<group>"; };
 		A87474481E3FB6DE00BCE55B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A8BE1AB91EABFE3A00A0A318 /* EventsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8BE1ABB1EABFE3A00A0A318 /* EventsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTests.swift; sourceTree = "<group>"; };
+		A8BE1ABD1EABFE3A00A0A318 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8ED69CE1E63335500FFCCBE /* EstimoteSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EstimoteSDK.framework; path = "../../Downloads/iOS-SDK-master/EstimoteSDK/EstimoteSDK.framework"; sourceTree = "<group>"; };
 		A8ED69D01E633ED300FFCCBE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A8ED69D21E633EE900FFCCBE /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		A8ED69D41E633EF900FFCCBE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		A8ED69D61E63498500FFCCBE /* BeaconController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconController.swift; sourceTree = "<group>"; };
-		A8ED69DB1E638B0500FFCCBE /* BeaconNotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconNotificationsManager.swift; sourceTree = "<group>"; };
-		A8ED69DD1E638B0E00FFCCBE /* BeaconID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconID.swift; sourceTree = "<group>"; };
 		A8EFC0581E423360006E82CB /* EventsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +87,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A8BE1AB61EABFE3A00A0A318 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -88,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				4FD6C4761B754AF1002F9F90 /* Events */,
+				A8BE1ABA1EABFE3A00A0A318 /* EventsTests */,
 				4FD6C4751B754AF1002F9F90 /* Products */,
 				DDFDDF0A29E4BDD114B51BBC /* Pods */,
 				6B868AEB1ACA7FCA4636C7F7 /* Frameworks */,
@@ -98,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				4FD6C4741B754AF1002F9F90 /* Events.app */,
+				A8BE1AB91EABFE3A00A0A318 /* EventsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,8 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				A8240A2D1EA12F72009B993F /* EventTableCells */,
-				A8ED69DD1E638B0E00FFCCBE /* BeaconID.swift */,
-				A8ED69DB1E638B0500FFCCBE /* BeaconNotificationsManager.swift */,
 				4FD6C49A1B755242002F9F90 /* Bridging-Header.h */,
 				4FD6C49C1B755242002F9F90 /* RootViewController.swift */,
 				4FD6C49D1B755242002F9F90 /* InitialViewController.swift */,
@@ -134,9 +147,7 @@
 				4F393A281C3C8BCD00B3EA13 /* main.swift */,
 				A87474481E3FB6DE00BCE55B /* Main.storyboard */,
 				A8EFC0581E423360006E82CB /* EventsController.swift */,
-				A8ED69D61E63498500FFCCBE /* BeaconController.swift */,
 				A8398A7F1E64DD6A001A7451 /* EventCell.swift */,
-				A866DC431E68A4FB0029B2EB /* TESTBLE.swift */,
 				A866DC451E6B4C150029B2EB /* MyEventsController.swift */,
 				A866DC471E6CB3B10029B2EB /* EventViewController.swift */,
 				A868C0911E76BD0E00835269 /* SplashScreenController.swift */,
@@ -172,6 +183,15 @@
 			name = EventTableCells;
 			sourceTree = "<group>";
 		};
+		A8BE1ABA1EABFE3A00A0A318 /* EventsTests */ = {
+			isa = PBXGroup;
+			children = (
+				A8BE1ABB1EABFE3A00A0A318 /* EventsTests.swift */,
+				A8BE1ABD1EABFE3A00A0A318 /* Info.plist */,
+			);
+			path = EventsTests;
+			sourceTree = "<group>";
+		};
 		DDFDDF0A29E4BDD114B51BBC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,13 +224,31 @@
 			productReference = 4FD6C4741B754AF1002F9F90 /* Events.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A8BE1AB81EABFE3A00A0A318 /* EventsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8BE1AC21EABFE3A00A0A318 /* Build configuration list for PBXNativeTarget "EventsTests" */;
+			buildPhases = (
+				A8BE1AB51EABFE3A00A0A318 /* Sources */,
+				A8BE1AB61EABFE3A00A0A318 /* Frameworks */,
+				A8BE1AB71EABFE3A00A0A318 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A8BE1ABF1EABFE3A00A0A318 /* PBXTargetDependency */,
+			);
+			name = EventsTests;
+			productName = EventsTests;
+			productReference = A8BE1AB91EABFE3A00A0A318 /* EventsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		4FD6C46C1B754AF1002F9F90 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Salesforce;
 				TargetAttributes = {
@@ -230,6 +268,12 @@
 							};
 						};
 					};
+					A8BE1AB81EABFE3A00A0A318 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = GZ3CDHH99G;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4FD6C4731B754AF1002F9F90;
+					};
 				};
 			};
 			buildConfigurationList = 4FD6C46F1B754AF1002F9F90 /* Build configuration list for PBXProject "Events" */;
@@ -246,6 +290,7 @@
 			projectRoot = "";
 			targets = (
 				4FD6C4731B754AF1002F9F90 /* Events */,
+				A8BE1AB81EABFE3A00A0A318 /* EventsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -257,6 +302,13 @@
 			files = (
 				4F36A3671DC175BD00FEACD7 /* Images.xcassets in Resources */,
 				A87474491E3FB6DE00BCE55B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8BE1AB71EABFE3A00A0A318 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,12 +371,9 @@
 				A8240A2A1E9EB5CC009B993F /* EventCollectionViewCell.swift in Sources */,
 				4FD6C47A1B754AF1002F9F90 /* AppDelegate.swift in Sources */,
 				A842BC971EA3BB95002469AB /* AboutTableViewCell.swift in Sources */,
-				A866DC441E68A4FB0029B2EB /* TESTBLE.swift in Sources */,
 				A8398A801E64DD6A001A7451 /* EventCell.swift in Sources */,
-				A8ED69D71E63498500FFCCBE /* BeaconController.swift in Sources */,
 				A866DC481E6CB3B10029B2EB /* EventViewController.swift in Sources */,
 				4FD6C49F1B755242002F9F90 /* RootViewController.swift in Sources */,
-				A8ED69DC1E638B0500FFCCBE /* BeaconNotificationsManager.swift in Sources */,
 				A842BC9F1EA3DFDB002469AB /* AttendanceButtonTableViewCell.swift in Sources */,
 				A868C0921E76BD0E00835269 /* SplashScreenController.swift in Sources */,
 				A85925E11E8C110B007AB291 /* MapAnnotation.swift in Sources */,
@@ -332,7 +381,6 @@
 				4F393A291C3C8BCD00B3EA13 /* main.swift in Sources */,
 				4FD6C4A01B755242002F9F90 /* InitialViewController.swift in Sources */,
 				A842BC9D1EA3DFCD002469AB /* LocationTableViewCell.swift in Sources */,
-				A8ED69DE1E638B0E00FFCCBE /* BeaconID.swift in Sources */,
 				A842BC9B1EA3C2A6002469AB /* DescriptionTableViewCell.swift in Sources */,
 				A8EFC0591E423360006E82CB /* EventsController.swift in Sources */,
 				A842BC951EA29903002469AB /* TitleTableViewCell.swift in Sources */,
@@ -340,7 +388,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A8BE1AB51EABFE3A00A0A318 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8BE1ABC1EABFE3A00A0A318 /* EventsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A8BE1ABF1EABFE3A00A0A318 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4FD6C4731B754AF1002F9F90 /* Events */;
+			targetProxy = A8BE1ABE1EABFE3A00A0A318 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4FD6C4911B754AF1002F9F90 /* Debug */ = {
@@ -468,6 +532,44 @@
 			};
 			name = Release;
 		};
+		A8BE1AC01EABFE3A00A0A318 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = GZ3CDHH99G;
+				INFOPLIST_FILE = EventsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MF.EventsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Events.app/Events";
+			};
+			name = Debug;
+		};
+		A8BE1AC11EABFE3A00A0A318 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEVELOPMENT_TEAM = GZ3CDHH99G;
+				INFOPLIST_FILE = EventsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MF.EventsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Events.app/Events";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -485,6 +587,15 @@
 			buildConfigurations = (
 				4FD6C4941B754AF1002F9F90 /* Debug */,
 				4FD6C4951B754AF1002F9F90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8BE1AC21EABFE3A00A0A318 /* Build configuration list for PBXNativeTarget "EventsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8BE1AC01EABFE3A00A0A318 /* Debug */,
+				A8BE1AC11EABFE3A00A0A318 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

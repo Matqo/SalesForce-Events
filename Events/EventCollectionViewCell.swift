@@ -12,6 +12,7 @@ class EventCollectionViewCell: UICollectionViewCell {
 	@IBOutlet weak var eventDetail: UILabel!
 	@IBOutlet var image: UIImageView!
 	@IBOutlet var distanceFrom: UILabel!
+	@IBOutlet var temperature: UILabel!
 
     
 }
